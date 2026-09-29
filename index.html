@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071426" />
+  <meta name="description" content="Nisa Lutantia Ayu Sholekha — Data Analytics Portfolio" />
+  <title>Nisa | Data Analytics Portfolio</title>
+  <style>
+    :root {
+      --bg: #06111f;
+      --bg-soft: #0a1728;
+      --panel: rgba(14, 31, 52, 0.72);
+      --panel-solid: #0d2036;
+      --border: rgba(150, 190, 235, 0.14);
+      --text: #f4f8ff;
+      --muted: #9db1c9;
+      --accent: #62b8ff;
+      --accent-2: #8c7bff;
+      --accent-soft: rgba(98, 184, 255, 0.12);
+      --success: #7de2bd;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(98, 184, 255, 0.14), transparent 28%),
+        radial-gradient(circle at 88% 14%, rgba(140, 123, 255, 0.12), transparent 26%),
+        linear-gradient(180deg, #06111f 0%, #081525 48%, #06101d 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 17, 31, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #06111f;
+      font-size: 15px;
+      box-shadow: 0 10px 28px rgba(98, 184, 255, 0.25);
+    }
+
+    .brand span:last-child { color: #d7e9ff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 10px;
+      transition: .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+    }
+
+    .hero {
+      padding: 84px 0 46px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid rgba(98, 184, 255, .22);
+      border-radius: 999px;
+      background: rgba(98, 184, 255, .07);
+      color: #bfddff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 14px rgba(125, 226, 189, .85);
+    }
+
+    h1 {
+      margin-top: 20px;
+      max-width: 760px;
+      font-size: clamp(48px, 7vw, 80px);
+      line-height: .98;
+      letter-spacing: -0.055em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(110deg, #ffffff 5%, #8ed0ff 52%, #9d92ff 95%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      margin-top: 22px;
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      font-weight: 750;
+      font-size: 14px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(98,184,255,.35);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8da9ff);
+      color: #05111f;
+      border-color: transparent;
+      box-shadow: 0 12px 30px rgba(98,184,255,.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.045);
+      color: #eaf4ff;
+    }
+
+    .hero-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #7489a2;
+    }
+
+    .dashboard-card {
+      position: relative;
+      padding: 20px;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(17,38,64,.82), rgba(7,19,33,.86));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .dashboard-card::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      top: -120px;
+      right: -90px;
+      border-radius: 50%;
+      background: rgba(98, 184, 255, .12);
+      filter: blur(34px);
+    }
+
+    .dash-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #c7d9ec;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .dash-pills {
+      display: flex;
+      gap: 6px;
+    }
+
+    .pill {
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(255,255,255,.035);
+    }
+
+    .dash-main {
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(3, 12, 23, .58);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .metric {
+      padding: 13px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .metric small {
+      color: #7188a4;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+      letter-spacing: -.03em;
+    }
+
+    .metric .up {
+      margin-top: 2px;
+      display: block;
+      color: var(--success);
+      font-size: 11px;
+    }
+
+    .chart {
+      margin-top: 4px;
+      height: 190px;
+      display: flex;
+      align-items: end;
+      gap: 9px;
+      padding: 12px 4px 4px;
+      border-radius: 14px;
+      background:
+        repeating-linear-gradient(to top, transparent 0, transparent 44px, rgba(255,255,255,.055) 45px),
+        rgba(255,255,255,.02);
+    }
+
+    .bar {
+      flex: 1;
+      height: var(--h);
+      min-width: 10px;
+      border-radius: 8px 8px 3px 3px;
+      background: linear-gradient(180deg, #77cbff, #526ff6);
+      box-shadow: 0 8px 22px rgba(82,111,246,.14);
+      animation: rise .9s ease both;
+      animation-delay: var(--d);
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: scaleY(.3); transform-origin: bottom; }
+      to { opacity: 1; transform: scaleY(1); }
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .kicker {
+      color: #81bfff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -.04em;
+    }
+
+    .section-head p {
+      max-width: 530px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(12, 29, 48, .56);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 33px;
+      letter-spacing: -.05em;
+      margin-bottom: 4px;
+    }
+
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      min-height: 310px;
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(18, 38, 62, .76), rgba(8,20,35,.7));
+      border: 1px solid var(--border);
+      transition: transform .22s ease, border-color .22s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: rgba(98,184,255,.28);
+    }
+
+    .project-tag {
+      width: max-content;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #bfe2ff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .project h3 {
+      margin-top: 20px;
+      font-size: 21px;
+      letter-spacing: -.03em;
+    }
+
+    .project p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-meta {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      padding-top: 20px;
+    }
+
+    .tech {
+      font-size: 11px;
+      color: #b6c9df;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .about-card, .skills-card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(12,29,48,.62);
+      padding: 26px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 14px;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 16px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .skill strong {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .skill span {
+      color: #7f95ad;
+      font-size: 12px;
+    }
+
+    .contact {
+      padding-bottom: 96px;
+    }
+
+    .contact-box {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 26px;
+      border: 1px solid rgba(98,184,255,.2);
+      background:
+        radial-gradient(circle at 86% 18%, rgba(140,123,255,.2), transparent 32%),
+        radial-gradient(circle at 12% 80%, rgba(98,184,255,.16), transparent 34%),
+        rgba(12,29,48,.72);
+    }
+
+    .contact-box p {
+      max-width: 610px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .contact-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 24px 0 34px;
+      color: #6f8399;
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 26px), var(--max)); }
+      .nav-links a:nth-child(-n+2) { display: none; }
+      .hero { padding-top: 54px; }
+      h1 { font-size: 48px; }
+      .hero-copy { font-size: 16px; }
+      .projects { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .skills { grid-template-columns: 1fr; }
+      .section { padding: 56px 0; }
+      .contact-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="brand-mark">N</span>
+        <span>nisa.data</span>
+      </a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Data analytics portfolio</div>
+          <h1>Turning messy data into <span class="gradient-text">clear decisions.</span></h1>
+          <p class="hero-copy">
+            Hi, I’m Nisa. I explore data, build practical dashboards, and translate patterns
+            into insights that people can actually use.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">View selected work <span>↗</span></a>
+            <a class="btn btn-secondary" href="https://github.com/potatoo0/datacollection" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+          <p class="hero-note">Currently exploring analytics, people data, and business insights.</p>
+        </div>
+
+        <div class="dashboard-card" aria-label="Analytics dashboard preview">
+          <div class="dash-top">
+            <span>Performance overview</span>
+            <div class="dash-pills"><span class="pill">Q3</span><span class="pill">2026</span></div>
+          </div>
+          <div class="dash-main">
+            <div class="metric-row">
+              <div class="metric">
+                <small>Revenue</small>
+                <strong>+24.8%</strong>
+                <span class="up">↑ 4.2% vs prior</span>
+              </div>
+              <div class="metric">
+                <small>Orders</small>
+                <strong>18.4k</strong>
+                <span class="up">↑ 8.7% growth</span>
+              </div>
+              <div class="metric">
+                <small>Retention</small>
+                <strong>72.6%</strong>
+                <span class="up">↑ 2.1 pts</span>
+              </div>
+            </div>
+            <div class="chart" aria-hidden="true">
+              <span class="bar" style="--h:42%;--d:.02s"></span>
+              <span class="bar" style="--h:56%;--d:.08s"></span>
+              <span class="bar" style="--h:48%;--d:.14s"></span>
+              <span class="bar" style="--h:64%;--d:.2s"></span>
+              <span class="bar" style="--h:61%;--d:.26s"></span>
+              <span class="bar" style="--h:76%;--d:.32s"></span>
+              <span class="bar" style="--h:70%;--d:.38s"></span>
+              <span class="bar" style="--h:86%;--d:.44s"></span>
+              <span class="bar" style="--h:78%;--d:.5s"></span>
+              <span class="bar" style="--h:94%;--d:.56s"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Snapshot</div>
+            <h2>Numbers, but make them useful.</h2>
+          </div>
+          <p>
+            A portfolio built around the full analytics workflow: collect, clean, explore,
+            visualize, and communicate.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>5+</strong><span>Analytics workflow areas</span></div>
+          <div class="stat"><strong>3</strong><span>Core analysis themes</span></div>
+          <div class="stat"><strong>10+</strong><span>Tools & techniques explored</span></div>
+          <div class="stat"><strong>∞</strong><span>Questions hiding in datasets</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Selected work</div>
+            <h2>Projects with a point.</h2>
+          </div>
+          <p>
+            Case-study placeholders for analysis projects. Swap the copy and links with your
+            real notebooks, dashboards, or reports as you publish them.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <span class="project-tag">Business analytics</span>
+            <h3>Sales Performance Dashboard</h3>
+            <p>Track revenue, order volume, category performance, and monthly trends to surface where growth is coming from.</p>
+            <div class="project-meta">
+              <span class="tech">Excel</span>
+              <span class="tech">Dashboard</span>
+              <span class="tech">Data visualization</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="project-tag">People analytics</span>
+            <h3>HR Attrition Insights</h3>
+            <p>Explore employee patterns by tenure, role, workload, and other factors to identify useful questions for HR teams.</p>
+            <div class="project-meta">
+              <span class="tech">Excel</span>
+              <span class="tech">EDA</span>
+              <span class="tech">HR analytics</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="project-tag">Customer analytics</span>
+            <h3>Customer Segmentation</h3>
+            <p>Turn transaction-level behavior into practical customer groups and a clearer view of retention opportunities.</p>
+            <div class="project-meta">
+              <span class="tech">Python</span>
+              <span class="tech">Clustering</span>
+              <span class="tech">Insights</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container about-grid">
+        <div class="about-card" id="about">
+          <div class="kicker">About</div>
+          <h2>Curious by default.</h2>
+          <p>
+            I’m interested in the space where data meets people and business. My approach is
+            simple: understand the question first, keep the analysis grounded, and present the
+            result so a non-analyst can follow it too.
+          </p>
+          <p>
+            This portfolio is a home for experiments, dashboards, case studies, and lessons
+            learned along the way.
+          </p>
+        </div>
+
+        <div class="skills-card">
+          <div class="kicker">Toolkit</div>
+          <h2>What I work with.</h2>
+          <div class="skills" style="margin-top:20px">
+            <div class="skill"><strong>Microsoft Excel</strong><span>VLOOKUP, HLOOKUP, formulas, analysis</span></div>
+            <div class="skill"><strong>Data Visualization</strong><span>Dashboards, charts, storytelling</span></div>
+            <div class="skill"><strong>Research & Statistics</strong><span>Descriptive analysis, interpretation, reporting</span></div>
+            <div class="skill"><strong>People Analytics</strong><span>HR metrics, employee data, workforce questions</span></div>
+            <div class="skill"><strong>Python</strong><span>Exploration, cleaning, automation</span></div>
+            <div class="skill"><strong>Communication</strong><span>Turning findings into clear takeaways</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="kicker">Let’s connect</div>
+          <h2>Have a dataset worth poking at?</h2>
+          <p>
+            I’m open to analytics projects, internships, and roles where curious questions
+            become measurable insights.
+          </p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://github.com/potatoo0" target="_blank" rel="noreferrer">GitHub profile ↗</a>
+            <a class="btn btn-secondary" href="mailto:hello@example.com">Email me ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Nisa Lutantia Ayu Sholekha · Built for curious humans and suspiciously large spreadsheets.</div>
+  </footer>
+</body>
+</html>
